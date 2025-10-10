@@ -1,0 +1,67 @@
+.vacanciesContainer {
+    display: flex;
+    max-width: 41.25rem;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.vacanciesError {
+    border-radius: 0.75rem;
+    background-color: #ffffff;
+    padding-inline: 2rem;
+    padding-block: 2rem;
+}
+
+.vacanciesErrorInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vacanciesErrorTextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.vacanciesErrorTitle {
+    padding-inline-end: 5px;
+    font-family: "Open Sans Condensed";
+    font-weight: 700;
+    font-size: 2.125rem;
+    line-height: 130%;
+    color: #0f0f10;
+}
+
+.vacanciesErrorText {
+    font-family: "Open Sans Condensed";
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    color: #0f0f10;
+}
+
+.vacanciesErrorButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4263eb;
+    color: #ffffff;
+}
+
+.vacanciesErrorImg {
+    min-width: 640px;
+    min-height: 336px;
+}
+
+.vacanciesCardList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}

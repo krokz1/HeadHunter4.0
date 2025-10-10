@@ -1,0 +1,125 @@
+@use "../../assets/fonts/fonts.scss" as *;
+@use "../../styles/reset.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+.aside {
+  display: flex;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  justify-self: right;
+  align-self: start;
+}
+
+.asideСontainer {
+  position: relative;
+  background: $background-color;
+  padding: 1.5rem;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.asideLabel {
+  margin-block-end: 0.75rem;
+  font-family: "Open Sans Condensed";
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: $color-text;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.inputSkill {
+  padding-inline: 0.5rem 6.8125rem;
+  padding-block: 0px;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(15, 15, 16, 0.2);
+  font-family: "Open Sans Condensed";
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.75rem;
+  color: $color-placeholder;
+
+  &::placeholder {
+    font-family: "Open Sans Condensed";
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.75rem;
+    color: $color-placeholder;
+  }
+}
+
+.addButton {
+  border: none;
+  min-height: 2.25rem;
+  min-width: 2.125rem;
+  background-color: rgba(34, 139, 230, 1);
+  border-radius: 0.5rem;
+  opacity: 0.5;
+
+  svg {
+    stroke: #fff;
+  }
+}
+
+.skillsList {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillChip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-color-accent;
+  border-radius: 999px;
+
+  .skillText {
+    margin-inline-end: 0.5rem;
+    font-family: "Open Sans Condensed";
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: $color-text;
+  }
+
+  .closeButton {
+    border: none;
+    width: 0.875rem;
+    height: 0.875rem;
+    background-color: inherit;
+
+    svg {
+      color: rgba(15, 15, 16, 0.3);
+    }
+  }
+}
+
+.inputCity {
+  padding-inline: 2.0625rem 7.25rem;
+  padding-block: 1px;
+  border-radius: 0.25rem;
+  border: 1px solid #0f0f1033;
+  font-family: "Open Sans Condensed";
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 2.125rem;
+  color: #0f0f104d;
+
+  &::placeholder {
+    font-family: "Open Sans Condensed";
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 2.125rem;
+    color: #0f0f104d;
+  }
+}
