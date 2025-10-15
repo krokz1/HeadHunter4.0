@@ -1,4 +1,5 @@
 import { Container, Button, Group } from "@mantine/core";
+import { Link } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import styles from "./NotFoundPage.module.scss";
 
@@ -18,7 +19,7 @@ export function NotFoundPage() {
                   Давайте перейдём к началу.
                 </p>
               </div>
-              <Button className={styles.vacanciesErrorButton}>
+              <Button component={Link} to="/vacancies" className={styles.vacanciesErrorButton}>
                 На главную
               </Button>
             </div>

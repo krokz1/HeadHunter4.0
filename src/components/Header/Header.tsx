@@ -10,9 +10,9 @@ export function Header() {
     <AppShell header={{ height: 60 }}>
       <AppShell.Header className={styles.header}>
         <Group className={styles.headerContainer}>
-          <a href="#">
+          <Link to="/vacancies">
             <Logo className={styles.headerLogo} />
-          </a>
+          </Link>
           <Group className={styles.headerNavigation}>
             {(() => {
               const location = useLocation();
