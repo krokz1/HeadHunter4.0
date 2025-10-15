@@ -10,7 +10,6 @@ import {
   Badge,
   Loader,
 } from "@mantine/core";
-import { Header } from "../../components/Header/Header";
 import type { IVacancy } from "../../types/index";
 import styles from "./VacancyPage.module.scss";
 
@@ -114,7 +113,6 @@ export function VacancyPage() {
   if (error || !vacancy) {
     return (
       <>
-        <Header />
         <Container size="lg" py="xl">
           <Text c="red">{error || "Вакансия не найдена"}</Text>
           <Button component={Link} to="/vacancies" mt="md">
@@ -127,7 +125,6 @@ export function VacancyPage() {
 
   return (
     <>
-      <Header />
       <main className={styles.main}>
         <Card className={styles.vacanciesCard}>
           <Title order={1} className={styles.vacanciesCardTitle}>
