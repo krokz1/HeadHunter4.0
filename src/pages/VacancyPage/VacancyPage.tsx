@@ -95,7 +95,6 @@ export function VacancyPage() {
   if (loading) {
     return (
       <>
-        <Header />
         <Container
           size="lg"
           py="xl"
@@ -130,7 +129,6 @@ export function VacancyPage() {
     <>
       <Header />
       <main className={styles.main}>
-        {/* 👇 КАРТОЧКА ВАКАНСИИ (НЕ ИЗМЕНЯЛАСЬ) */}
         <Card className={styles.vacanciesCard}>
           <Title order={1} className={styles.vacanciesCardTitle}>
             {vacancy.name}
