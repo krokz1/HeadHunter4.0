@@ -1,4 +1,5 @@
-import { AppShell, Group, NavLink } from "@mantine/core";
+import { AppShell, Group } from "@mantine/core";
+import { Link, useLocation } from "react-router-dom";
 import { Logo } from "../../assets/icons/Logo";
 import { UserIcon } from "../../assets/icons/UserIcon";
 import "../../styles/reset.scss";
@@ -13,17 +14,33 @@ export function Header() {
             <Logo className={styles.headerLogo} />
           </a>
           <Group className={styles.headerNavigation}>
-            <NavLink
-              href="/link1"
-              label="Вакансии FE"
-              className={`${styles.headerLink} ${styles.headerLinkActive}`}
-            />
-            <NavLink
-              href="/link2"
-              label="Обо&nbsp;мне"
-              leftSection={<UserIcon />}
-              className={styles.headerLink}
-            />
+            {(() => {
+              const location = useLocation();
+              const isVacancies = location.pathname.startsWith("/vacancies");
+              const isAbout = location.pathname === "/about";
+
+              return (
+                <>
+                  <Link
+                    to="/vacancies"
+                    className={`${styles.headerLink} ${
+                      isVacancies ? styles.headerLinkActive : ""
+                    }`}
+                  >
+                    Вакансии FE
+                  </Link>
+                  <Link
+                    to="/about"
+                    className={`${styles.headerLink} ${
+                      isAbout ? styles.headerLinkActive : ""
+                    }`}
+                  >
+                    <UserIcon />
+                    <span>Обо&nbsp;мне</span>
+                  </Link>
+                </>
+              );
+            })()}
           </Group>
         </Group>
       </AppShell.Header>

@@ -1,0 +1,8 @@
+@use "../assets/fonts/fonts.scss" as *;
+@use "../styles/reset.scss" as *;
+@use "../styles/variables.scss" as *;
+
+.appShell {
+  min-height: 100vh;
+  background-color: $background-color;
+}

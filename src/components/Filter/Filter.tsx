@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { TextInput, ActionIcon, Text, Select, Pill } from "@mantine/core";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { TextInput, ActionIcon, Text, Pill } from "@mantine/core";
 import { useAppDispatch } from "../../hooks/redux";
 import {
-  setSearchParams,
+  setSearchParams as setReduxSearchParams,
   fetchVacancies,
 } from "../../store/slices/vacanciesSlice";
-import { IconPlus, IconMapPin } from "@tabler/icons-react";
+import { IconPlus } from "@tabler/icons-react";
 import styles from "./Filter.module.scss";
 
 export function SkillsInput() {
@@ -16,20 +17,32 @@ export function SkillsInput() {
     "React",
     "Redux",
   ]);
-  const [selectedCity, setSelectedCity] = useState<string | null>("");
+  const [searchParams, setUrlSearchParams] = useSearchParams();
 
-  const cities = [
-    { value: "", label: "Все города" },
-    { value: "1", label: "Москва" },
-    { value: "2", label: "Санкт-Петербург" },
-  ];
+  useEffect(() => {
+    const skillsParams = searchParams.getAll("skill_set");
+
+    if (skillsParams.length > 0) setSkills(skillsParams);
+  }, [searchParams]);
+
+  const updateURLParams = (newSkills: string[]) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.delete("skill_set");
+    newSkills.forEach((skill) => newParams.append("skill_set", skill));
+
+    setUrlSearchParams(newParams);
+  };
+
   const addSkill = () => {
     if (newSkill.trim() && !skills.includes(newSkill.trim())) {
       const updatedSkills = [...skills, newSkill.trim()];
       setSkills(updatedSkills);
       setNewSkill("");
 
-      dispatch(setSearchParams({ skill_set: updatedSkills }));
+      updateURLParams(updatedSkills);
+
+      dispatch(setReduxSearchParams({ skill_set: updatedSkills }));
       dispatch(
         fetchVacancies({
           skill_set: updatedSkills,
@@ -45,25 +58,12 @@ export function SkillsInput() {
     const updatedSkills = skills.filter((skill) => skill !== skillToRemove);
     setSkills(updatedSkills);
 
-    dispatch(setSearchParams({ skill_set: updatedSkills }));
+    updateURLParams(updatedSkills);
+
+    dispatch(setReduxSearchParams({ skill_set: updatedSkills }));
     dispatch(
       fetchVacancies({
         skill_set: updatedSkills,
-        industry: "7",
-        professional_role: "96",
-        per_page: 10,
-      })
-    );
-  };
-
-  const handleCityChange = (value: string | null) => {
-    setSelectedCity(value);
-
-    const areaValue = value || "";
-    dispatch(setSearchParams({ area: areaValue }));
-    dispatch(
-      fetchVacancies({
-        area: areaValue,
         industry: "7",
         professional_role: "96",
         per_page: 10,
@@ -109,31 +109,10 @@ export function SkillsInput() {
               withRemoveButton
               onRemove={() => removeSkill(skill)}
               className={styles.skillChip}
-              data-testid="skill-pill"
             >
               {skill}
             </Pill>
           ))}
-        </div>
-      </div>
-
-      <div className={styles.asideСontainer}>
-        <div className={styles.cityContainer}>
-          <Select
-            data={cities}
-            value={selectedCity}
-            onChange={handleCityChange}
-            placeholder="Все города"
-            leftSection={<IconMapPin size={16} color="#0F0F104D" />}
-            classNames={{
-              input: styles.inputCity,
-              root: styles.root,
-              section: styles.selectSection,
-            }}
-            styles={{
-              dropdown: { zIndex: 9999 },
-            }}
-          />
         </div>
       </div>
     </aside>

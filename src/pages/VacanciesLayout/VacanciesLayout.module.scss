@@ -1,0 +1,44 @@
+@use "../../assets/fonts/fonts.scss" as *;
+@use "../../styles/reset.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+.vacancyLayout {
+  min-height: 100vh;
+}
+
+.main {
+  display: grid;
+  grid-template-rows:  repeat(2, max-content);
+  grid-template-columns: repeat(2, max-content);
+  gap: 1.5rem; 
+  background-color: $background-color-accent;
+  padding-block-end: 84px;
+}
+
+.tabsContainer {
+  grid-row: 2/3;
+  grid-column: 3/4;
+  padding-inline-end: 13.75rem;
+
+}
+
+.tabsList {
+  width: 200px;
+
+   &::before {
+      border: none !important;
+    }
+}
+
+.tab {
+    
+    font-family: 'Open Sans Condensed';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: $color-text;
+
+  &[data-active] {
+    background: transparent;
+  }
+}
